@@ -61,11 +61,11 @@ function evaluate(play1, play2) {
 
 }
 
-for(let i=0; i<=4; i++){
-game();
+// for(let i=0; i<=4; i++){
+// game();
 
 
-if(i === 4){
-    alert(`Player 1 score is ${play1Score}, Player 2 score is ${play2Score}`);
+// if(i === 4){
+//     alert(`Player 1 score is ${play1Score}, Player 2 score is ${play2Score}`);
 
-}}
+// }}
