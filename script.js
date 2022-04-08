@@ -65,5 +65,16 @@ function game() {
     }
     console.log('game over');
     console.log(player1Score, ComputerScore);
+
+    function score(player1Score,ComputerScore){
+            if(player1Score > ComputerScore){
+                console.log('Player 1 wins Game!!!!!!');
+            } else if(player1Score<ComputerScore){
+                console.log('computer Wins!!!!!!!');
+            } else {
+                console.log('draw');
+            }
+    }
+    score(player1Score,ComputerScore); 
 }
 game();
