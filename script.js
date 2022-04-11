@@ -2,16 +2,42 @@ let computerSelection;
 let playerSelection;
 let ComputerScore = 0;
 let player1Score = 0;
+const buttons = document.querySelectorAll('.btn');
 
 
 function game() {
 
-    for (let i = 0; i < 5; i++) {
+   
+
 
         // player 1 choses weapon
-        playerSelection = prompt('pick');
+function check(e){
+    if(e.target.classList.contains('rock')){
+        console.log(computerSelection);
+            console.log('rock');
+            playerSelection = 'Rock';
+            playRound(playerSelection, computerSelection);
+    } else if (e.target.classList.contains('paper')){
+        console.log(computerSelection);
+            console.log('Paper')
+            playerSelection = 'Paper';
+            playRound(playerSelection, computerSelection);
+    } else if(e.target.classList.contains('scissors')){
+        console.log(computerSelection);
+            console.log('Scissors');
+            playerSelection = 'Scissors';
+            playRound(playerSelection, computerSelection);
+    }
+}
+
+for(let i = 0; i < buttons.length; i++){
+    buttons[i].addEventListener('click',(e)=>{
+     check(e);
+    })
+}
 
 
+// computer choses weapon
         function computerPlay() {
             // create random num between 0-2
             let randomNum = Math.floor(Math.random() * 3);
@@ -23,7 +49,6 @@ function game() {
             } else if (randomNum === 2) {
                 computerSelection = 'Scissors'
             }
-            console.log(computerSelection);
         }
         computerPlay();
 
@@ -59,14 +84,7 @@ function game() {
 
         }
 
-
-        playRound(playerSelection, computerSelection);
-
-    }
-    console.log('game over');
-    console.log(player1Score, ComputerScore);
-
-    function score(player1Score,ComputerScore){
+        function score(player1Score,ComputerScore){
             if(player1Score > ComputerScore){
                 console.log('Player 1 wins Game!!!!!!');
             } else if(player1Score<ComputerScore){
@@ -75,6 +93,20 @@ function game() {
                 console.log('draw');
             }
     }
-    score(player1Score,ComputerScore); 
+
+    
+
+    score(player1Score,ComputerScore);
+
+
+    console.log('game over');
+    console.log(player1Score, ComputerScore);
+
+    
+
+   
+     
 }
+
+
 game();
