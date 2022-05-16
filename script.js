@@ -1,17 +1,24 @@
+
 let computerSelection;
 let playerSelection;
-let ComputerScore = 0;
+let computerScore = 0;
 let player1Score = 0;
 const buttons = document.querySelectorAll('.btn');
 
+function  round(){
 
-function game() {
+for(let i = 0; i < buttons.length; i++){
+    buttons[i].addEventListener('click',(e)=>{
+     check(e);
+    })
+}
 
-   
 
 
-        // player 1 choses weapon
+
+
 function check(e){
+    computerPlay();
     if(e.target.classList.contains('rock')){
         console.log(computerSelection);
             console.log('rock');
@@ -28,17 +35,11 @@ function check(e){
             playerSelection = 'Scissors';
             playRound(playerSelection, computerSelection);
     }
-}
-
-for(let i = 0; i < buttons.length; i++){
-    buttons[i].addEventListener('click',(e)=>{
-     check(e);
-    })
+    
 }
 
 
-// computer choses weapon
-        function computerPlay() {
+   function computerPlay() {
             // create random num between 0-2
             let randomNum = Math.floor(Math.random() * 3);
             //    convert randomNum to weapon
@@ -50,15 +51,13 @@ for(let i = 0; i < buttons.length; i++){
                 computerSelection = 'Scissors'
             }
         }
-        computerPlay();
 
-        // evaluation of players weapons returning a winner
-        function playRound(playerSelection, computerSelection) {
+ function playRound(playerSelection, computerSelection) {
             if (playerSelection === 'Rock' && computerSelection === 'Rock') {
                 console.log('Draw');
             } else if (playerSelection === 'Rock' && computerSelection === 'Paper') {
                 console.log('Paper beats Rock. Computer wins round!');
-                ComputerScore++;
+                computerScore++;
             } else if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
                 console.log('Rock beats Scissors. Player 1 wins!!');
                 player1Score++;
@@ -69,44 +68,36 @@ for(let i = 0; i < buttons.length; i++){
                 player1Score++;
             } else if (playerSelection === 'Paper' && computerSelection === 'Scissors') {
                 console.log('Scissors beats Paper. Computer wins!');
-                ComputerScore++;
+                computerScore++;
             } else if (playerSelection === 'Scissors' && computerSelection === 'Scissors') {
                 console.log('Draw');
             } else if (playerSelection === 'Scissors' && computerSelection === 'Rock') {
                 console.log('Rock beats Scissors. Computer wins!');
-                ComputerScore++;
+                computerScore++;
             } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
-                console.log('Scissors beats Paper. Player 1! wins!');
                 player1Score++
+                console.log('Scissors beats Paper. Player 1! wins!');
             } else {
                 console.log('error');
             }
-
+            console.log(player1Score,computerScore);
+            if(player1Score == 5 || computerScore == 5){
+                    score(player1Score,computerScore);
+            }
         }
+        
+    }
 
-        function score(player1Score,ComputerScore){
-            if(player1Score > ComputerScore){
+round();
+
+
+
+function score(player1Score,computerScore){
+            if(player1Score > computerScore){
                 console.log('Player 1 wins Game!!!!!!');
-            } else if(player1Score<ComputerScore){
-                console.log('computer Wins!!!!!!!');
+            } else if(player1Score<computerScore){
+                console.log('computer Wins Game!!!!!!!');
             } else {
                 console.log('draw');
             }
-    }
-
-    
-
-    score(player1Score,ComputerScore);
-
-
-    console.log('game over');
-    console.log(player1Score, ComputerScore);
-
-    
-
-   
-     
-}
-
-
-game();
+        }
