@@ -8,6 +8,7 @@ body {
 
 #header{
     display: flex;
+    flex: 1;
     justify-content: space-between;
     height: 10%;
 }
@@ -16,7 +17,7 @@ body {
     
     display: flex;
     flex-direction: column;  
-    justify-content: ; 
+    /* justify-content: ;  */
     border: solid .5px;
     width: 15%;
 }
@@ -37,7 +38,12 @@ body {
     align-self: flex-start;
 }
 
+.display{
+    flex: 1;
+}
+
 .weapons{
+    flex: 1;
     align-self: center;
     justify-self: flex-end;
 }
